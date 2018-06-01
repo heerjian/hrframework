@@ -1,0 +1,97 @@
+package com.hframwork.result;
+
+import org.springframework.http.HttpStatus;
+
+public class Result<T> {
+	/**
+	 * 数据
+	 */
+	private T data;
+	/**
+	 * 是否成功
+	 */
+	private boolean isSuccess;
+	/**
+	 * 消息
+	 */
+	private String message;
+	/**
+	 * 数据
+	 */
+	private T date;
+	/**
+	 * 返回结果码
+	 */
+	private String code;
+
+	public String getCode() {
+		return code;
+	}
+
+	public void setCode(String code) {
+		this.code = code;
+	}
+
+	public T getDate() {
+		return date;
+	}
+
+	public void setDate(T date) {
+		this.date = date;
+	}
+
+	public String getMessage() {
+		return message;
+	}
+
+	public void setMessage(String message) {
+		this.message = message;
+	}
+
+	public boolean isSuccess() {
+		return isSuccess;
+	}
+
+	public void setSuccess(boolean isSuccess) {
+		this.isSuccess = isSuccess;
+	}
+
+	public T getData() {
+		return data;
+	}
+
+	public void setData(T data) {
+		this.data = data;
+	}
+
+	public static <T> Result<T> error(T data, String message) {
+		Result<T> result = new Result<T>();
+		result.setData(data);
+		result.setMessage(message);
+		result.setSuccess(false);
+		return result;
+	}
+
+	public static <T> Result<T> success(T data, String message) {
+		Result<T> result = new Result<T>();
+		result.setData(data);
+		result.setMessage(message);
+		result.setSuccess(true);
+		result.setCode(String.valueOf(HttpStatus.OK.value()));
+		return result;
+	}
+
+	public Result() {
+		super();
+	}
+
+	public Result(T data, boolean isSuccess, String message, T date, String code) {
+		super();
+		this.data = data;
+		this.isSuccess = isSuccess;
+		this.message = message;
+		this.date = date;
+		this.code = code;
+	}
+
+}

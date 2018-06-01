@@ -1,0 +1,9 @@
+jdbcRealm=org.apache.shiro.realm.jdbc.JdbcRealm
+dataSourse=com.mchange.v2.c3p0.ComboPooledDataSource
+dataSourse.driverClass=com.mysql.jdvc.Driver
+dataSourse.jdbcUrl=jdbc:mysql://localhost:3306/shiro
+dataSourse.user=root
+dataSourse.password=123456
+jdbcRealm.dataSource=$dataSourse
+securityManager.realm=$jdbcRealm
+
